@@ -45,6 +45,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   awesome_dialog: ^3.2.1
   flutter_facebook_auth: ^7.1.1
+  flutter_zoom_drawer: ^3.2.0
+  hexcolor: ^3.0.1
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:

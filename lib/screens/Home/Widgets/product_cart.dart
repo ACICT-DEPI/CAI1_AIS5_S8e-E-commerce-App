@@ -9,9 +9,9 @@ import 'package:e_commerce/screens/constans.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   const ProductCard({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,6 @@ class ProductCard extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: kcontentColor,
             ),
             child: Column(
               children: [
@@ -101,7 +100,7 @@ class ProductCard extends StatelessWidget {
               child: Container(
                 height: 40,
                 width: 40,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kprimaryColor,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(20),

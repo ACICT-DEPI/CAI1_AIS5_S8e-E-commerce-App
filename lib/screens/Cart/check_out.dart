@@ -12,14 +12,13 @@ class CheckOutBox extends StatelessWidget {
     return Container(
         height: 300,
         width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
         ),
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -29,21 +28,20 @@ class CheckOutBox extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide.none,
                 ),
-                contentPadding: EdgeInsets.symmetric(
+                contentPadding: const EdgeInsets.symmetric(
                   vertical: 5,
                   horizontal: 15,
                 ),
                 filled: true,
-                fillColor: kcontentColor,
                 hintText: 'Enter Discount Code',
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
                 suffixIcon: TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     "Apply",
                     style: TextStyle(
                       fontSize: 20,
@@ -54,13 +52,13 @@ class CheckOutBox extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Subtotal",
                   style: TextStyle(
                     fontSize: 16,
@@ -70,24 +68,24 @@ class CheckOutBox extends StatelessWidget {
                 ),
                 Text(
                   "\$ ${provider.totalPrice()}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Total",
                   style: TextStyle(
                     fontSize: 16,
@@ -96,23 +94,23 @@ class CheckOutBox extends StatelessWidget {
                 ),
                 Text(
                   "\$ ${provider.totalPrice()}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                 backgroundColor: kprimaryColor,
-                minimumSize: Size(double.infinity, 55),
+                minimumSize: const Size(double.infinity, 55),
               ),
-              child: Text(
+              child: const Text(
                 "proceed to Check out",
                 style: TextStyle(
                   fontSize: 16,

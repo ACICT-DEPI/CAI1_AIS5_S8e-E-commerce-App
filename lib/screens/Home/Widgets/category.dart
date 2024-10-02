@@ -25,7 +25,7 @@ class _CategoriesState extends State<Categories> {
               });
             },
             child: Container(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: selectedindex == index?Colors.blue[200]:Colors.transparent,

@@ -14,12 +14,12 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int cuttentIndex = 2;
-  List screensList = const [
-    Scaffold(),
-    Favorite(),
-    HomeScreen(),
-    CartScreen(),
-    Profile(),
+  List screensList = [
+    const Scaffold(),
+    const Favorite(),
+    const HomeScreen(),
+    const CartScreen(),
+    const Profile(),
   ];
 
   @override
@@ -33,7 +33,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         },
         shape: const CircleBorder(),
         backgroundColor: kprimaryColor,
-        child: Icon(
+        child: const Icon(
           Icons.home,
           color: Colors.white,
           size: 35,
@@ -41,9 +41,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        
         elevation: 1,
         height: 60,
-        color: Colors.white,
         shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -75,7 +75,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   color:
                       cuttentIndex == 1 ? kprimaryColor : Colors.grey.shade400,
                 )),
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             IconButton(

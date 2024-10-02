@@ -11,7 +11,7 @@ class VerificationEmail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: BackButton(
+        leading: const BackButton(
           color: Colors.black,
         ),
       ),
@@ -21,10 +21,10 @@ class VerificationEmail extends StatelessWidget {
           padding: const EdgeInsets.all(22.0),
           child:Column(
             children: [
-              SizedBox(
+              const SizedBox(
                     height: 20,
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       "Check Your Email",
                       style: TextStyle(
@@ -33,10 +33,10 @@ class VerificationEmail extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       "We sent a verifiation link to your email",
                       style: TextStyle(
@@ -45,22 +45,22 @@ class VerificationEmail extends StatelessWidget {
                         ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.email_outlined,
                     size: 150,
                     color: kprimaryColor2,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   CustomButton(title: "Verify email",onPressed: (){
                     Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Signin()));
+                                  builder: (context) => const Signin()));
                   },)
             ],
           )

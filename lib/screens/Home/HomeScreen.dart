@@ -1,10 +1,13 @@
 import 'package:e_commerce/models/category.dart';
 import 'package:e_commerce/models/products.dart';
-import 'package:e_commerce/screens/Home/Widgets/home_app_bar.dart';
+import 'package:e_commerce/provider/theme_provider.dart';
+import 'package:e_commerce/screens/Drawer/home_drawer.dart';
 import 'package:e_commerce/screens/Home/Widgets/image_slider.dart';
 import 'package:e_commerce/screens/Home/Widgets/product_cart.dart';
 import 'package:e_commerce/screens/Home/Widgets/search_bar.dart';
+import 'package:e_commerce/screens/constans.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  GlobalKey<ScaffoldState> scaffoldkey = GlobalKey();
+
   int currentSlide = 0;
   int selcetedIndex = 0;
   @override
@@ -28,19 +33,63 @@ class _HomeScreenState extends State<HomeScreen> {
       jewelry,
       menFashion
     ];
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      key: scaffoldkey,
+      appBar: AppBar(
+  elevation: 0,
+  title: const Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      Text("Welcome to"),
+      Text(
+        "Snap Shop",
+        style: TextStyle(color: kprimaryColor),
+      ),
+    ],
+  ),
+  leading: IconButton(
+    style: IconButton.styleFrom(
+      
+      padding: const EdgeInsets.all(20),
+    ),
+    onPressed: () {
+      scaffoldkey.currentState!.openDrawer();
+    },
+    icon: Image.asset(
+      "images/icon.png",
+      height: 30,
+      width: 25,
+      color: kprimaryColor,
+    ),
+  ),
+  actions: [
+    // Adding a Switch to the AppBar
+    Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return Switch(
+          value: themeProvider.isDarkMode, // Get the current theme mode
+          onChanged: (value) {
+            themeProvider.toggleTheme(value); // Toggle the theme mode
+          },
+          activeColor: kprimaryColor, // Switch active color
+          inactiveThumbColor: kcontentColor, // Switch inactive color
+        );
+      },
+    ),
+  ],
+),
+
+      
+      drawer: const HomeDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
               //for custom appBar
-              const customAppBar(),
+
               const SizedBox(
                 height: 20,
               ),
@@ -76,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         });
                       },
                       child: Container(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: selcetedIndex ==
@@ -132,7 +181,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Colors.black45,
                     ),
                   ),
                 ],
@@ -153,7 +201,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       product: selectedCategories[selcetedIndex][index]);
                 },
               ),
-             
             ],
           ),
         ),

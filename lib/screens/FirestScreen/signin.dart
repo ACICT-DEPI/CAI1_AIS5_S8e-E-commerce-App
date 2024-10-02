@@ -30,13 +30,13 @@ class _SigninState extends State<Signin> {
     }
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
     );
 
     // Once signed in, return the UserCredential
@@ -53,7 +53,7 @@ class _SigninState extends State<Signin> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: BackButton(
+        leading: const BackButton(
           color: Colors.black,
         ),
       ),
@@ -66,10 +66,10 @@ class _SigninState extends State<Signin> {
               key: formState,
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       "Sign in to Your Account",
                       style: TextStyle(
@@ -78,7 +78,7 @@ class _SigninState extends State<Signin> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   CustomTextForm(
@@ -90,8 +90,9 @@ class _SigninState extends State<Signin> {
                         if (val == null || val.isEmpty) {
                           return 'Please enter your email';
                         }
+                        return null;
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomTextForm(
@@ -103,8 +104,9 @@ class _SigninState extends State<Signin> {
                         if (val == null || val.isEmpty) {
                           return 'Please enter your password';
                         }
+                        return null;
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -117,12 +119,12 @@ class _SigninState extends State<Signin> {
                           });
                         },
                       ),
-                      Text('Remember Me'),
-                      SizedBox(
+                      const Text('Remember Me'),
+                      const SizedBox(
                         width: 80,
                       ),
                       TextButton(
-                        child: Text("Forget Password",
+                        child: const Text("Forget Password",
                             style: TextStyle(
                               color: kprimaryColor2,
                             )),
@@ -130,7 +132,7 @@ class _SigninState extends State<Signin> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   CustomButton(
@@ -148,7 +150,7 @@ class _SigninState extends State<Signin> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => BottomNavBar()));
+                                    builder: (context) => const BottomNavBar()));
                           } else {
                             AwesomeDialog(
                               context: context,
@@ -189,7 +191,7 @@ class _SigninState extends State<Signin> {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -199,7 +201,7 @@ class _SigninState extends State<Signin> {
                       fontSize: 13,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -213,14 +215,14 @@ class _SigninState extends State<Signin> {
                         onPressed: () {
                           signInWithGoogle();
                         },
-                        child: Image(
+                        child: const Image(
                           image: NetworkImage(
                               "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"),
                           width: 50,
                           height: 50,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       MaterialButton(
@@ -229,7 +231,7 @@ class _SigninState extends State<Signin> {
                             borderRadius: BorderRadius.circular(15)),
                         color: Colors.white,
                         onPressed: () {},
-                        child: Image(
+                        child: const Image(
                           image: NetworkImage(
                               "https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/83-facebook-512.png"),
                           width: 35,
@@ -238,13 +240,13 @@ class _SigninState extends State<Signin> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 60,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Don't have an account?",
                         style: TextStyle(
                           fontSize: 14,
@@ -255,9 +257,9 @@ class _SigninState extends State<Signin> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Signup()));
+                                    builder: (context) => const Signup()));
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign Up",
                             style: TextStyle(
                               fontSize: 14,

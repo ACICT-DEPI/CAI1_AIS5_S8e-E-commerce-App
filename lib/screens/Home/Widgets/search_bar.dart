@@ -11,16 +11,16 @@ class MySearchBar extends StatelessWidget {
       height: 55,
       width: double.infinity,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30), color: kcontentColor),
-      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+          borderRadius: BorderRadius.circular(30), ),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
       child: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.search,
             color: kprimaryColor,
             size: 30,
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Flexible(
@@ -30,24 +30,20 @@ class MySearchBar extends StatelessWidget {
                 showSearch(context: context, delegate: CustomerSearch());
                 print(query);
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: "Search....", border: InputBorder.none),
             ),
           ),
           Container(
             height: 25,
             width: 1.5,
-            color: Colors.grey,
+            
           ),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.tune,
-                color: kprimaryColor,
-              ))
+          
         ],
       ),
     );
+  
   }
 }
 class CustomerSearch extends SearchDelegate{
@@ -89,7 +85,7 @@ class CustomerSearch extends SearchDelegate{
     return[
       IconButton(onPressed: () {
         query="";
-      }, icon: Icon(Icons.close))
+      }, icon: const Icon(Icons.close))
 
     ];
 
@@ -100,7 +96,7 @@ class CustomerSearch extends SearchDelegate{
     return
       IconButton(onPressed: () {
         close(context, null);
-      }, icon: Icon(Icons.arrow_back));
+      }, icon: const Icon(Icons.arrow_back));
 
 
 
@@ -108,7 +104,7 @@ class CustomerSearch extends SearchDelegate{
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text("");
+    return const Text("");
 
   }
 
@@ -121,7 +117,7 @@ class CustomerSearch extends SearchDelegate{
 
             return Card(child: Padding(
               padding: const EdgeInsets.all(18.0),
-              child: Text("${username[i]}" , style: TextStyle(fontSize: 16), ),
+              child: Text("${username[i]}" , style: const TextStyle(fontSize: 16), ),
             ));
           });
 
@@ -133,7 +129,7 @@ class CustomerSearch extends SearchDelegate{
 
           return Card(child: Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Text("${filterList![i]}" , style: TextStyle(fontSize: 16), ),
+            child: Text("${filterList![i]}" , style: const TextStyle(fontSize: 16), ),
           ));
         });
     }

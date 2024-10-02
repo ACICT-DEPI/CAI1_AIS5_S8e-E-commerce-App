@@ -17,10 +17,8 @@ class _FavoriteState extends State<Favorite> {
     final finalList = provider.favorties;
 
     return Scaffold(
-      backgroundColor: kcontentColor,
       appBar: AppBar(
-         backgroundColor: kcontentColor,
-        title: Text(
+        title: const Text(
           'Favorites',
           style: TextStyle(fontWeight: FontWeight.bold),
           
@@ -45,7 +43,6 @@ class _FavoriteState extends State<Favorite> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
                             ),
                             padding: const EdgeInsets.all(10),
                             child: Row(
@@ -54,7 +51,6 @@ class _FavoriteState extends State<Favorite> {
                                   height: 85,
                                   width: 85,
                                   decoration: BoxDecoration(
-                                    color: kcontentColor,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   padding: const EdgeInsets.all(10),
@@ -111,7 +107,7 @@ class _FavoriteState extends State<Favorite> {
                                   finalList.removeAt(index);
                                   setState(() {});
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   color: Colors.red,
                                   size: 25,
