@@ -5,7 +5,6 @@ import 'package:e_commerce/screens/Detail/widget/description.dart';
 import 'package:e_commerce/screens/Detail/widget/detail_appbar.dart';
 import 'package:e_commerce/screens/Detail/widget/image_slider.dart';
 import 'package:e_commerce/screens/Detail/widget/itemdetails.dart';
-import 'package:e_commerce/screens/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
