@@ -1,7 +1,6 @@
 import 'package:e_commerce/models/products.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ItemDetails extends StatelessWidget {
   final Product product;

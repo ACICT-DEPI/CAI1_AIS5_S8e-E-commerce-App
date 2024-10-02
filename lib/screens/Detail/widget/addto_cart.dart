@@ -18,7 +18,7 @@ class _AddToCartState extends State<AddToCart> {
   Widget build(BuildContext context) {
     final provider = CartProvider.of(context);
     return Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           bottom: 15,
           left: 15,
           right: 15,
@@ -93,7 +93,6 @@ class _AddToCartState extends State<AddToCart> {
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -123,6 +122,6 @@ class _AddToCartState extends State<AddToCart> {
               ),
             ],
           ),
-        ));
+        ),);
   }
 }

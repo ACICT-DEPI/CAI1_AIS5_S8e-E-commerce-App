@@ -1,4 +1,5 @@
 import 'package:e_commerce/models/products.dart';
+import 'package:e_commerce/provider/product_viewed_provider.dart';
 import 'package:e_commerce/screens/Detail/widget/addto_cart.dart';
 import 'package:e_commerce/screens/Detail/widget/description.dart';
 import 'package:e_commerce/screens/Detail/widget/detail_appbar.dart';
@@ -6,23 +7,36 @@ import 'package:e_commerce/screens/Detail/widget/image_slider.dart';
 import 'package:e_commerce/screens/Detail/widget/itemdetails.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DetailScreen extends StatefulWidget {
-  final Product product;
-  const DetailScreen({super.key, required this.product});
+  class DetailScreen extends StatefulWidget {
+    final Product product;
+    const DetailScreen({super.key, required this.product});
 
-  @override
-  State<DetailScreen> createState() => _DetailScreenState();
-}
+    @override
+    State<DetailScreen> createState() => _DetailScreenState();
+  }
 
 class _DetailScreenState extends State<DetailScreen> {
   int currentimage = 0;
   int currentColor = 1;
+   @override
+  void initState() {
+    super.initState();
+
+    // Add the product to the viewed products list in initState
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<ViewedProductsProvider>(context, listen: false)
+          .addProduct(widget.product);
+    });
+  }
+   
+   
   @override
   Widget build(BuildContext context) {
+  
     return Scaffold(
 
-      backgroundColor: kcontentColor,
       //for add to Cart ,icon and quantity
       floatingActionButton: AddToCart(product: widget.product),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -71,7 +85,6 @@ class _DetailScreenState extends State<DetailScreen> {
               Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                    color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(40),
                       topLeft: Radius.circular(40),

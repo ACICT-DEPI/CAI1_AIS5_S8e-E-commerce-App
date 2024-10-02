@@ -8,8 +8,8 @@ class CustomTextForm extends StatefulWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
 
-  CustomTextForm(
-      {required this.hintText,
+  const CustomTextForm(
+      {super.key, required this.hintText,
       required this.keyboardType,
       required this.myControler,
       required this.isPassword,
@@ -37,19 +37,19 @@ class _CustomTextFormState extends State<CustomTextForm> {
         obscureText: (widget.isPassword && isObscured),
         keyboardType: widget.keyboardType,
         decoration: InputDecoration(
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
             color: kprimaryColor2,
           )),
-          contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 20),
+          contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
           filled: true,
           fillColor: Colors.grey[100],
           labelText: widget.hintText,
-          labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
+          labelStyle: const TextStyle(color: Colors.grey, fontSize: 15),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           suffixIcon: IconButton(
             onPressed: togglePasswordVisibility,
@@ -66,20 +66,20 @@ class _CustomTextFormState extends State<CustomTextForm> {
         controller: widget.myControler,
         keyboardType: widget.keyboardType,
         decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: kprimaryColor2,
               ),
             ),
-            contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 20),
+            contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
             filled: true,
             fillColor: Colors.grey[100],
             labelText: widget.hintText,
-            labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
+            labelStyle: const TextStyle(color: Colors.grey, fontSize: 15),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: const BorderSide(color: Colors.grey),
             )),
       );
     }

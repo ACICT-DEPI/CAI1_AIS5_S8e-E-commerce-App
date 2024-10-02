@@ -51,7 +51,7 @@ class _SignupState extends State<Signup> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: BackButton(
+        leading: const BackButton(
           color: Colors.black,
         ),
       ),
@@ -64,10 +64,10 @@ class _SignupState extends State<Signup> {
               key: formState,
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       "Sign Up for Free",
                       style: TextStyle(
@@ -76,7 +76,7 @@ class _SignupState extends State<Signup> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   CustomTextForm(
@@ -88,8 +88,9 @@ class _SignupState extends State<Signup> {
                         if (val == null || val.isEmpty) {
                           return 'Please enter your User Name';
                         }
+                        return null;
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomTextForm(
@@ -109,7 +110,7 @@ class _SignupState extends State<Signup> {
                         }
                         return null;
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomTextForm(
@@ -126,7 +127,7 @@ class _SignupState extends State<Signup> {
                         }
                         return null;
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomTextForm(
@@ -143,7 +144,7 @@ class _SignupState extends State<Signup> {
                         }
                         return null;
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   CustomButton(
@@ -161,7 +162,7 @@ class _SignupState extends State<Signup> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => VerificationEmail()));
+                                  builder: (context) => const VerificationEmail()));
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
                             print('The password provided is too weak.');
@@ -187,10 +188,9 @@ class _SignupState extends State<Signup> {
                           print(e);
                         }
                       }
-                      ;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -200,7 +200,7 @@ class _SignupState extends State<Signup> {
                       fontSize: 13,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   Row(
@@ -214,14 +214,14 @@ class _SignupState extends State<Signup> {
                         onPressed: () {
                           signInWithGoogle();
                         },
-                        child: Image(
+                        child: const Image(
                           image: NetworkImage(
                               "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"),
                           width: 50,
                           height: 50,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       MaterialButton(
@@ -230,7 +230,7 @@ class _SignupState extends State<Signup> {
                             borderRadius: BorderRadius.circular(15)),
                         color: Colors.white,
                         onPressed: () {},
-                        child: Image(
+                        child: const Image(
                           image: NetworkImage(
                               "https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/83-facebook-512.png"),
                           width: 35,
@@ -239,13 +239,13 @@ class _SignupState extends State<Signup> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Already have an account?",
                         style: TextStyle(
                           fontSize: 14,
@@ -256,9 +256,9 @@ class _SignupState extends State<Signup> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Signin()));
+                                    builder: (context) => const Signin()));
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign in",
                             style: TextStyle(
                               fontSize: 14,

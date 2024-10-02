@@ -30,27 +30,13 @@ class Description extends StatelessWidget {
                 ),
               ),
             ),
-            const Text(
-              "Specification",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const Text(
-              "Reviews",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          
+            
           ],
         ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
 
-        Text(description, style: TextStyle(
+        Text(description, style: const TextStyle(
           fontSize: 16,
           color: Colors.grey,
         )),

@@ -1,11 +1,14 @@
 import 'package:e_commerce/provider/cart_provider.dart';
 import 'package:e_commerce/provider/favorite_provider.dart';
+import 'package:e_commerce/provider/product_viewed_provider.dart';
+import 'package:e_commerce/provider/theme_provider.dart';
 import 'package:e_commerce/screens/FirestScreen/signin.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
 void main() async{
@@ -39,15 +42,40 @@ class _MyAppState extends State<MyApp> {
           providers: [
             ChangeNotifierProvider(create: (_) => CartProvider()),
             ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+            ChangeNotifierProvider(create: (_) => ViewedProductsProvider()),
+                    ChangeNotifierProvider(create: (_) => ThemeProvider()), 
+
           ],
-          child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                textTheme: GoogleFonts.mulishTextTheme(),
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
+         child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Snap Shop',
+            theme: ThemeData(
+              
+              textTheme: GoogleFonts.mulishTextTheme(),
+             // useMaterial3: true,
+            ),
+           
+           
+           
+           
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              scaffoldBackgroundColor: HexColor('333739'),
+              appBarTheme: AppBarTheme(
+                color: HexColor('333739'),
               ),
-              home:(FirebaseAuth.instance.currentUser!= null && FirebaseAuth.instance.currentUser!.emailVerified) ? BottomNavBar(): Signin())
-              );
-}
+            ),
+            themeMode: themeProvider.themeMode, // Use ThemeMode from ThemeProvider
+            home: (FirebaseAuth.instance.currentUser != null &&
+                    FirebaseAuth.instance.currentUser!.emailVerified)
+                ? const BottomNavBar()
+                : const Signin(),
+          );
+      
+      
+        },
+      ),
+    );
+  }

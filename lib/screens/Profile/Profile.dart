@@ -13,15 +13,17 @@ class Profile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-              child: IconButton(
-                  onPressed: () async {
-                    GoogleSignIn googleSignIn = GoogleSignIn();
-                    googleSignIn.disconnect();
-                    await FirebaseAuth.instance.signOut();
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => Signin()));
-                  },
-                  icon: Icon(Icons.exit_to_app)))
+            child: IconButton(
+              onPressed: () async {
+                GoogleSignIn googleSignIn = GoogleSignIn();
+                googleSignIn.disconnect();
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const Signin()));
+              },
+              icon: const Icon(Icons.exit_to_app),
+            ),
+          ),
         ],
       ),
     );
