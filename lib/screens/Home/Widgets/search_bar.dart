@@ -34,7 +34,7 @@ class MySearchBar extends StatelessWidget {
                   hintText: "Search....", border: InputBorder.none),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
             width: 1.5,
             

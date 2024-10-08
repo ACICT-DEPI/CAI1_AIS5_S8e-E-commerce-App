@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CreditCardForm extends StatefulWidget {
+  const CreditCardForm({super.key});
+
   @override
   _CreditCardFormState createState() => _CreditCardFormState();
 }
@@ -16,10 +18,10 @@ class _CreditCardFormState extends State<CreditCardForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Credit Card Form'),
+        title: const Text('Credit Card Form'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -29,10 +31,10 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 'assets/credit_card_image.png', // Change the path to your image
                 height: 200, // Set desired height
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextFormField(
                 controller: _cardNumberController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Card Number',
                   border: OutlineInputBorder(),
                 ),
@@ -47,10 +49,10 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 },
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextFormField(
                 controller: _cardHolderController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Cardholder Name',
                   border: OutlineInputBorder(),
                 ),
@@ -61,13 +63,13 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   return null;
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Row(
                 children: [
                   Expanded(
                     child: TextFormField(
                       controller: _expiryDateController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Expiry Date (MM/YY)',
                         border: OutlineInputBorder(),
                       ),
@@ -80,11 +82,11 @@ class _CreditCardFormState extends State<CreditCardForm> {
                       keyboardType: TextInputType.datetime,
                     ),
                   ),
-                  SizedBox(width: 16.0),
+                  const SizedBox(width: 16.0),
                   Expanded(
                     child: TextFormField(
                       controller: _cvvController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'CVV',
                         border: OutlineInputBorder(),
                       ),
@@ -102,17 +104,17 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Process the data if valid
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Processing Data')),
+                      const SnackBar(content: Text('Processing Data')),
                     );
                   }
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),

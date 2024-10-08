@@ -4,6 +4,8 @@ import 'package:e_commerce/screens/payment/shipping_address.dart';
 import 'package:flutter/material.dart';
 
 class PaymentSelectionScreen extends StatefulWidget {
+  const PaymentSelectionScreen({super.key});
+
   @override
   State<PaymentSelectionScreen> createState() => _PaymentSelectionScreenState();
 }
@@ -23,16 +25,16 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Payment Method'),
+        title: const Text('Select Payment Method'),
         centerTitle: true,
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Center(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Container(
@@ -65,11 +67,11 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                               Text(
                                 "Amazon Pay",
                                 style: _type == 4
-                                    ? TextStyle(
+                                    ? const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       )
-                                    : TextStyle(
+                                    : const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -88,7 +90,7 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Container(
@@ -121,11 +123,11 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                               Text(
                                 "Google Pay",
                                 style: _type == 1
-                                    ? TextStyle(
+                                    ? const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       )
-                                    : TextStyle(
+                                    : const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -144,7 +146,7 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Container(
@@ -177,25 +179,25 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                               Text(
                                 "Credit card",
                                 style: _type == 2
-                                    ? TextStyle(
+                                    ? const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       )
-                                    : TextStyle(
+                                    : const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       ),
                               ),
                             ],
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Image.asset(
                             "images/payment/visa.png",
                             width: 40,
                             fit: BoxFit.cover,
                             color: kprimaryColor,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 8,
                           ),
                           Image.asset(
@@ -208,7 +210,7 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Container(
@@ -241,11 +243,11 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                               Text(
                                 "PayPal",
                                 style: _type == 3
-                                    ? TextStyle(
+                                    ? const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       )
-                                    : TextStyle(
+                                    : const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -264,7 +266,7 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 200,
                 ),
                 ElevatedButton(
@@ -274,16 +276,16 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   ),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return ShippingAddressForm();
+                        return const ShippingAddressForm();
                       },
                     ));
                   },
-                  child: Text(
+                  child: const Text(
                     "Complete Payment",
                     style: TextStyle(
                         color: Colors.white,

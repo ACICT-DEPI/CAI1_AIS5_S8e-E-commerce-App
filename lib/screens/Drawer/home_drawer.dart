@@ -1,6 +1,5 @@
 
 import 'package:e_commerce/screens/FirestScreen/signin.dart';
-import 'package:e_commerce/screens/Home/HomeScreen.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:e_commerce/screens/product_viewed_screen/product_viewed.dart';

@@ -25,7 +25,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return PaymentSuccessScreen();
+            return const PaymentSuccessScreen();
           },
         ),
       );
@@ -38,7 +38,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Credit Card'),
+        title: const Text('Credit Card'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -86,8 +86,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
                     label: 'Card Holder Name',
                     onChanged: (value) => cardHolderName = value,
                     validator: (value) {
-                      if (value!.isEmpty)
+                      if (value!.isEmpty) {
                         return 'Please enter card holder name';
+                      }
                       return null;
                     },
                   ),
@@ -103,7 +104,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
@@ -113,9 +114,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       padding:
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                          const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Proceed to Payment',
                       style: TextStyle(color: Colors.white, fontSize: 22),
                     ),
@@ -136,7 +137,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
     String? Function(String?)? validator, // Add validator parameter
   }) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30.0),
       ),
@@ -148,8 +149,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
             ),
           ),
           labelText: label,
-          border: OutlineInputBorder(),
-          contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          border: const OutlineInputBorder(),
+          contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         ),
         keyboardType: keyboardType,
         validator: validator, // Use the provided validator

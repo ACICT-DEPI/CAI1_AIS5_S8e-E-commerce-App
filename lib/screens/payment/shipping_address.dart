@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'credit_card_form.dart'; // Import your CreditCardForm here
 
 class ShippingAddressForm extends StatefulWidget {
-  const ShippingAddressForm({Key? key}) : super(key: key);
+  const ShippingAddressForm({super.key});
 
   @override
   _ShippingAddressFormState createState() => _ShippingAddressFormState();
@@ -46,7 +46,7 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
         context,
         MaterialPageRoute(
             builder: (context) =>
-                CreditCardForm()), // Navigate to CreditCardForm
+                const CreditCardForm()), // Navigate to CreditCardForm
       );
     }
   }
@@ -57,11 +57,11 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shipping Address'),
+        title: const Text('Shipping Address'),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -70,14 +70,14 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
                   label: 'Name',
                   onChanged: (value) => name = value,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 _buildTextField(
                   label: 'Address',
                   onChanged: (value) => address = value,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -85,7 +85,7 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
                   label: 'City',
                   onChanged: (value) => city = value,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -93,7 +93,7 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
                   label: 'State',
                   onChanged: (value) => state = value,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -102,12 +102,12 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
                   keyboardType: TextInputType.number,
                   onChanged: (value) => postalCode = value,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
                 _buildCountryDropdown(),
-                SizedBox(height: 100,), // Add the country dropdown here
+                const SizedBox(height: 100,), // Add the country dropdown here
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                     maximumSize: Size(size.width, 60),
@@ -115,12 +115,12 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   ),
                   
                  
                   onPressed: _submitForm,
-                  child: Text(
+                  child: const Text(
                     'Submit Address',
                     style: TextStyle(
                         fontSize: 22,
@@ -149,7 +149,7 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
           ),
           ),
         labelText: label,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       keyboardType: keyboardType,
       validator: (value) {
@@ -165,8 +165,8 @@ class _ShippingAddressFormState extends State<ShippingAddressForm> {
   Widget _buildCountryDropdown() {
     return DropdownButtonFormField<String>(
       value: country,
-      decoration: InputDecoration(
-         focusedBorder: const OutlineInputBorder(
+      decoration: const InputDecoration(
+         focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
             color: kprimaryColor,
           ),
