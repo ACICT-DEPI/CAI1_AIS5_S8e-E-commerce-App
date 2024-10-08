@@ -48,6 +48,7 @@ dependencies:
   flutter_zoom_drawer: ^3.2.0
   hexcolor: ^3.0.1
   shared_preferences: ^2.3.2
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,10 @@ flutter:
     - images/womenfashion/
     - images/menfashion/
     - images/jewelry/ 
+    - images/payment/
+    - images/animation/
+    
+   
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

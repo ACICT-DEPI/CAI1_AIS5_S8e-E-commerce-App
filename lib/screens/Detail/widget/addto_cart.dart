@@ -83,6 +83,9 @@ class _AddToCartState extends State<AddToCart> {
                   ],
                 ),
               ),
+            
+            
+            
               GestureDetector(
                 onTap: () {
                   provider.tooglefavorites(widget.product);
@@ -120,6 +123,8 @@ class _AddToCartState extends State<AddToCart> {
                   ),
                 ),
               ),
+            
+            
             ],
           ),
         ),);

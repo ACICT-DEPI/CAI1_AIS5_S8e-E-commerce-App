@@ -1,6 +1,7 @@
 
 import 'package:e_commerce/screens/FirestScreen/signin.dart';
 import 'package:e_commerce/screens/Home/HomeScreen.dart';
+import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:e_commerce/screens/product_viewed_screen/product_viewed.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,7 +42,7 @@ class HomeDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  context, MaterialPageRoute(builder: (context) => const BottomNavBar()));
             },
           ),
  ListTile(
@@ -50,7 +51,7 @@ class HomeDrawer extends StatelessWidget {
               color: kprimaryColor,
             ),
             title: const Text(
-              'History',
+              'Views',
               
             ),
             onTap: () {
