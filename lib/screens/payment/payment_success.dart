@@ -53,7 +53,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               ),
               child: const Text(
-                'Go to Home',
+                'Go to Home Screen',
                 style: TextStyle(fontSize: 18 ,color: Colors.white),
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:e_commerce/screens/constans.dart';
-import 'package:e_commerce/screens/payment/credit_card_form.dart';
 import 'package:e_commerce/screens/payment/shipping_address.dart';
 import 'package:flutter/material.dart';
 

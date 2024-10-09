@@ -109,7 +109,7 @@ class CheckOutBox extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return PaymentSelectionScreen();
+                    return const PaymentSelectionScreen();
                   },
                 ));
               },
