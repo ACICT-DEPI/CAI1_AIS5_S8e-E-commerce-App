@@ -43,7 +43,7 @@ class CustomButton extends GetView<OnboardingControllerImp> {
                 controller.next();
               }
             },
-            child: Text(currentPage == onBoardingList.length - 1 ? "Let's Shop" : "Continue",style: TextStyle(color: Colors.white),),
+            child: Text(currentPage == onBoardingList.length - 1 ? "Let's Shop" : "Continue",style: const TextStyle(color: Colors.white),),
           ),
         ],
       ),

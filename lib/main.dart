@@ -2,7 +2,6 @@ import 'package:e_commerce/provider/cart_provider.dart';
 import 'package:e_commerce/provider/favorite_provider.dart';
 import 'package:e_commerce/provider/product_viewed_provider.dart';
 import 'package:e_commerce/provider/theme_provider.dart';
-import 'package:e_commerce/screens/FirestScreen/signin.dart';
 import 'package:e_commerce/screens/Home/Widgets/splash_animated_screen.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';

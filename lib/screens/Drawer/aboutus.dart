@@ -3,11 +3,13 @@ import 'package:e_commerce/screens/constans.dart';
 import 'package:flutter/material.dart';
 
 class AboutUs extends StatelessWidget {
+  const AboutUs({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About Us'),
+        title: const Text('About Us'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -16,15 +18,15 @@ class AboutUs extends StatelessWidget {
             // Header Section
             Container(
               width: double.infinity,
-              padding: EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.all(16.0),
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.deepOrange, Colors.orangeAccent],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
               ),
-              child: Column(
+              child: const Column(
                 children: [
                   Text(
                     'SnapShop',
@@ -45,7 +47,7 @@ class AboutUs extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // About Us Text Section
             Padding(
@@ -55,8 +57,8 @@ class AboutUs extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -109,7 +111,7 @@ class AboutUs extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Key Features Section (Optional)
             Padding(
@@ -123,32 +125,32 @@ class AboutUs extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
             // Call to Action Button
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                   builder: (context) {
-                    return BottomNavBar();
+                    return const BottomNavBar();
                   },
                 ));
               },
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 backgroundColor: Colors.deepOrange,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Explore Our Products',
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -160,10 +162,10 @@ class AboutUs extends StatelessWidget {
     return Column(
       children: [
         Icon(icon, color: kprimaryColor, size: 40),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           label,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
       ],

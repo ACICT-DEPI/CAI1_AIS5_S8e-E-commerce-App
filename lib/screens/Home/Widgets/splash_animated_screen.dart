@@ -23,10 +23,10 @@ class splash_animated_screen extends StatelessWidget {
             height: 200,
           ),
           const SizedBox(height: 20),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               const Text(
+               Text(
             "Welcome to ",
             style: TextStyle(
               fontSize: 24,
@@ -34,7 +34,7 @@ class splash_animated_screen extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-               const Text(
+               Text(
             "SnapShop",
             style: TextStyle(
               fontSize: 24,
