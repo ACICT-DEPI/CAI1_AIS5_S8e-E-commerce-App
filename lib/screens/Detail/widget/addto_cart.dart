@@ -83,43 +83,72 @@ class _AddToCartState extends State<AddToCart> {
                   ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  provider.tooglefavorites(widget.product);
-                  const snackBar = SnackBar(
-                    content: Center(
-                      child: Text(
-                        "Successfully added",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    duration: Duration(seconds: 1),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                },
-                child: Container(
-                  height: 55,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: kprimaryColor,
-                  ),
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                  ),
-                  child: const Text(
-                    "Add To Cart",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+            
+            
+            
+       GestureDetector(
+  onTap: () {
+    final provider = CartProvider.of(context, listen: false);
+
+    // Check if the product is already in the cart
+    bool isInCart = provider.isInCart(widget.product);
+
+    if (isInCart) {
+      // Show a message that the product is already in the cart
+      const snackBar = SnackBar(
+        content: Center(
+          child: Text(
+            "Already in the cart",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        duration: Duration(seconds: 1),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } else {
+      // Add product to the cart
+      provider.tooglefavorites(widget.product);
+
+      // Show success message
+      const snackBar = SnackBar(
+        content: Center(
+          child: Text(
+            "Successfully added",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        duration: Duration(seconds: 1),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  },
+  child: Container(
+    height: 55,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(50),
+      color: kprimaryColor,
+    ),
+    alignment: Alignment.center,
+    padding: const EdgeInsets.symmetric(
+      horizontal: 50,
+    ),
+    child: const Text(
+      "Add To Cart",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+)
+   
             ],
           ),
         ),);

@@ -7,15 +7,17 @@ class CartProvider extends ChangeNotifier {
   final List<Product> _cart = [];
   List<Product> get cart => _cart;
   void tooglefavorites(Product product) {
-    if (_cart.contains(product)) {
-      for (Product element in _cart) {
-        element.quantity++;
-      }
-    } else {
-      _cart.add(product);
-    }
-    notifyListeners();
+  if (_cart.contains(product)) {
+    // Increment the quantity of the specific product in the cart
+    int index = _cart.indexOf(product);
+    _cart[index].quantity++;
+  } else {
+    // Add product to the cart
+    _cart.add(product);
   }
+  notifyListeners();
+}
+
 
   incrementQtn(int index) {
     _cart[index].quantity++;
@@ -37,8 +39,13 @@ class CartProvider extends ChangeNotifier {
     }
     return total1;
   }
+    bool isInCart(Product product) {
+      return _cart.contains(product);
+    }
+
 
   static CartProvider of(BuildContext context, {bool listen = true}) {
     return Provider.of<CartProvider>(context, listen: listen);
   }
+
 }

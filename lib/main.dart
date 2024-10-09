@@ -2,11 +2,12 @@ import 'package:e_commerce/provider/cart_provider.dart';
 import 'package:e_commerce/provider/favorite_provider.dart';
 import 'package:e_commerce/provider/product_viewed_provider.dart';
 import 'package:e_commerce/provider/theme_provider.dart';
-import 'package:e_commerce/screens/FirestScreen/signin.dart';
+import 'package:e_commerce/screens/Home/Widgets/splash_animated_screen.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -43,36 +44,31 @@ class _MyAppState extends State<MyApp> {
             ChangeNotifierProvider(create: (_) => CartProvider()),
             ChangeNotifierProvider(create: (_) => FavoriteProvider()),
             ChangeNotifierProvider(create: (_) => ViewedProductsProvider()),
-                    ChangeNotifierProvider(create: (_) => ThemeProvider()), 
+            ChangeNotifierProvider(create: (_) => ThemeProvider()), 
 
           ],
          child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Snap Shop',
-            theme: ThemeData(
-              
-              textTheme: GoogleFonts.mulishTextTheme(),
-             // useMaterial3: true,
+          return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Snap Shop',
+          theme: ThemeData(
+            textTheme: GoogleFonts.mulishTextTheme(),
+          ),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: HexColor('333739'),
+            appBarTheme: AppBarTheme(
+              color: HexColor('333739'),
             ),
-           
-           
-           
-           
-            darkTheme: ThemeData(
-              brightness: Brightness.dark,
-              scaffoldBackgroundColor: HexColor('333739'),
-              appBarTheme: AppBarTheme(
-                color: HexColor('333739'),
-              ),
-            ),
-            themeMode: themeProvider.themeMode, // Use ThemeMode from ThemeProvider
-            home: (FirebaseAuth.instance.currentUser != null &&
+          ),
+          themeMode: themeProvider.themeMode,
+          // Set SplashAnimatedScreen as the initial screen
+          home:(FirebaseAuth.instance.currentUser != null &&
                     FirebaseAuth.instance.currentUser!.emailVerified)
                 ? const BottomNavBar()
-                : const Signin(),
-          );
+                : const splash_animated_screen(),
+        );
       
       
         },

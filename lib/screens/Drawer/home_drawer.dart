@@ -1,6 +1,7 @@
 
+import 'package:e_commerce/screens/Drawer/aboutus.dart';
 import 'package:e_commerce/screens/FirestScreen/signin.dart';
-import 'package:e_commerce/screens/Home/HomeScreen.dart';
+import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:e_commerce/screens/product_viewed_screen/product_viewed.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,13 +27,13 @@ class HomeDrawer extends StatelessWidget {
             child: Center(
               child: Text(
                 'Welcome ,sir',
-                style: TextStyle(color: kprimaryColor),
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),
           ListTile(
             leading: const Icon(
-              Icons.home,
+              Icons.home_outlined,
               color: kprimaryColor,
             ),
             title: const Text(
@@ -41,7 +42,7 @@ class HomeDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  context, MaterialPageRoute(builder: (context) => const BottomNavBar()));
             },
           ),
  ListTile(
@@ -50,12 +51,26 @@ class HomeDrawer extends StatelessWidget {
               color: kprimaryColor,
             ),
             title: const Text(
-              'History',
+              'Views',
               
             ),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => const ViewedProductsScreen()));
+            },
+          ),
+           ListTile(
+            leading: const Icon(
+              Icons.info_outline,
+              color: kprimaryColor,
+            ),
+            title: const Text(
+              'About us',
+              
+            ),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) =>  AboutUs()));
             },
           ),
 

@@ -5,7 +5,7 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primarySwatch:Colors.deepOrange ,  // Replace 'kprimaryColor' with 'Colors.deepPurple'
   scaffoldBackgroundColor: Colors.white,
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     color: Colors.deepOrange ,  // Use 'color' instead of 'backgroundColor'
   ),
 );

@@ -1,4 +1,5 @@
 import 'package:e_commerce/screens/constans.dart';
+import 'package:e_commerce/screens/payment/paymentselection.dart';
 import 'package:flutter/material.dart';
 
 import '../../provider/cart_provider.dart';
@@ -105,7 +106,13 @@ class CheckOutBox extends StatelessWidget {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const PaymentSelectionScreen();
+                  },
+                ));
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: kprimaryColor,
                 minimumSize: const Size(double.infinity, 55),

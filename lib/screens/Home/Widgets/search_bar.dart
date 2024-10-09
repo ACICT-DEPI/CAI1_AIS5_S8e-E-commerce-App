@@ -1,3 +1,7 @@
+
+
+import 'package:e_commerce/models/products.dart';
+import 'package:e_commerce/screens/Detail/detail_screen.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:flutter/material.dart';
 
@@ -27,113 +31,120 @@ class MySearchBar extends StatelessWidget {
             flex: 4,
             child: TextField(
               onChanged: (query) {
-                showSearch(context: context, delegate: CustomerSearch());
+                showSearch(context: context, delegate: ProductSearchDelegate());
                 print(query);
               },
               decoration: const InputDecoration(
                   hintText: "Search....", border: InputBorder.none),
             ),
           ),
-          Container(
-            height: 25,
-            width: 1.5,
-            
-          ),
-          
+         
         ],
       ),
     );
-  
   }
 }
-class CustomerSearch extends SearchDelegate{
-
-
-  List username= [
-    "Air Jordan",
-    "Vans Old Skool",
-    "Women-Shoes",
-    "Sports Shoes",
-    "White Sneaker",
-    "Face Care Product",
-    "Super Perfume",
-    "Skin-Care Product",
-    "Women Kurta",
-    "T-shirt",
-    "Pants",
-    "Earrings",
-    "Jewelry-Box",
-    "Wedding Ring",
-    "Necklace-Jewellery",
-    "Man Jacket",
-    "Men Pants",
-    "Men Shirt",
-    "T-Shirt",
-    "Watch",
-    "Smart Watch",
-    "Mens Jacket",
-    "Wireless Headphones",
-    "Woman Sweater",
-  ];
-
-  List? filterList;
-
-
-
+class ProductSearchDelegate extends SearchDelegate<Product?> {
   @override
-  List<Widget>? buildActions(BuildContext context) {
-    return[
-      IconButton(onPressed: () {
-        query="";
-      }, icon: const Icon(Icons.close))
-
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      ),
     ];
-
   }
 
   @override
-  Widget? buildLeading(BuildContext context) {
-    return
-      IconButton(onPressed: () {
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () {
         close(context, null);
-      }, icon: const Icon(Icons.arrow_back));
-
-
-
+      },
+    );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    return const Text("");
+    final Set<Product> results = {
+      ...all.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...shoes.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...beauty.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...womenFashion.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...jewelry.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...menFashion.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+    };
 
+    // Debugging logs
+    print('Query: $query');
+    print('Results: ${results.length}');
+    for (var product in results) {
+      print('Found Product: ${product.title}');
+    }
+
+    return results.isNotEmpty
+        ? ListView.builder(
+      itemCount: results.length,
+      itemBuilder: (context, index) {
+        final product = results.elementAt(
+            index); // Access the product using elementAt
+        return ListTile(
+          title: Text(product.title),
+          subtitle: Text(product.seller),
+          onTap: () {
+            // Navigate to product details
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailScreen(product: product),
+              ),
+            );
+          },
+        );
+      },
+    )
+        : const Center(child: Text('No products found'));
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    if(query=="") {
-      return ListView.builder(
-          itemCount: username.length,
-          itemBuilder: (context,i){
+    final Set<Product> suggestions = {
+      ...all.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...shoes.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...beauty.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...womenFashion.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...jewelry.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+      ...menFashion.where((product) =>
+          product.title.toLowerCase().contains(query.toLowerCase())),
+    };
 
-            return Card(child: Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text("${username[i]}" , style: const TextStyle(fontSize: 16), ),
-            ));
-          });
-
-    }else{
-      filterList=username.where((element)=> element.contains(query)).toList();
-      return ListView.builder(
-        itemCount: filterList!.length,
-        itemBuilder: (context,i){
-
-          return Card(child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Text("${filterList![i]}" , style: const TextStyle(fontSize: 16), ),
-          ));
-        });
-    }
-
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        final product = suggestions.elementAt(
+            index); // Access the product using elementAt
+        return ListTile(
+          title: Text(product.title),
+          onTap: () {
+            query = product.title;
+            showResults(context);
+          },
+        );
+      },
+    );
   }
-
 }
