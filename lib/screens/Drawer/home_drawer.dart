@@ -1,4 +1,5 @@
 
+import 'package:e_commerce/screens/Drawer/aboutus.dart';
 import 'package:e_commerce/screens/FirestScreen/signin.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:e_commerce/screens/constans.dart';
@@ -26,13 +27,13 @@ class HomeDrawer extends StatelessWidget {
             child: Center(
               child: Text(
                 'Welcome ,sir',
-                style: TextStyle(color: kprimaryColor),
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),
           ListTile(
             leading: const Icon(
-              Icons.home,
+              Icons.home_outlined,
               color: kprimaryColor,
             ),
             title: const Text(
@@ -56,6 +57,20 @@ class HomeDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => const ViewedProductsScreen()));
+            },
+          ),
+           ListTile(
+            leading: const Icon(
+              Icons.info_outline,
+              color: kprimaryColor,
+            ),
+            title: const Text(
+              'About us',
+              
+            ),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) =>  AboutUs()));
             },
           ),
 
