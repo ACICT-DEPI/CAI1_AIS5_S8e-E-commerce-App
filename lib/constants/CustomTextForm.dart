@@ -37,7 +37,6 @@ class _CustomTextFormState extends State<CustomTextForm> {
         obscureText: (widget.isPassword && isObscured),
         keyboardType: widget.keyboardType,
         style: TextStyle(
-          color: Colors.black,
           fontSize: 15,
         ),
         decoration: InputDecoration(
@@ -47,9 +46,8 @@ class _CustomTextFormState extends State<CustomTextForm> {
           )),
           contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
           filled: true,
-          fillColor: Colors.grey[100],
           labelText: widget.hintText,
-          labelStyle: const TextStyle(color: Colors.grey, fontSize: 15),
+          labelStyle: const TextStyle(color: kprimaryColor, fontSize: 15),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -70,7 +68,6 @@ class _CustomTextFormState extends State<CustomTextForm> {
         controller: widget.myControler,
         keyboardType: widget.keyboardType,
         style: TextStyle(
-          color: Colors.black,
           fontSize: 15,
         ),
         decoration: InputDecoration(
@@ -81,9 +78,8 @@ class _CustomTextFormState extends State<CustomTextForm> {
             ),
             contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
             filled: true,
-            fillColor: Colors.grey[100],
             labelText: widget.hintText,
-            labelStyle: const TextStyle(color: Colors.grey, fontSize: 15),
+            labelStyle: const TextStyle(color: kprimaryColor, fontSize: 15),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

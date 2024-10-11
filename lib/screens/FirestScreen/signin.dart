@@ -255,7 +255,6 @@ class _SigninState extends State<Signin> {
                         height: 60,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
-                        color: Colors.white,
                         onPressed: () {
                           signInWithGoogle();
                         },
@@ -267,13 +266,12 @@ class _SigninState extends State<Signin> {
                         ),
                       ),
                       const SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       MaterialButton(
                         height: 60,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
-                        color: Colors.white,
                         onPressed: () {},
                         child: const Image(
                           image: NetworkImage(
