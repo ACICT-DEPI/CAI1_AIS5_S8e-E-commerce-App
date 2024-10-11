@@ -5,25 +5,28 @@ import 'package:flutter/material.dart';
 class Product {
   final String title;
   final String description;
-  final String image;
-  final String review;
-  final String seller;
+  final String image; // Ensure this matches with your model
   final double price;
+  final String seller;
   final List<Color> colors;
   final String category;
+  final String review;
   final double rate;
-  int quantity;
+   int quantity;
+  final String imageBytes; // Optional if needed
+
   Product({
     required this.title,
     required this.description,
     required this.image,
-    required this.review,
-    required this.seller,
     required this.price,
+    required this.seller,
     required this.colors,
     required this.category,
+    required this.review,
     required this.rate,
     required this.quantity,
+    this.imageBytes = '',
   });
 }
 final List<Product> all = [

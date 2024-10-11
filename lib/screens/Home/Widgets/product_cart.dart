@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:e_commerce/provider/favorite_provider.dart';
-import 'package:e_commerce/screens/Detail/detail_screen.dart';
-import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'dart:io';
 
 import 'package:e_commerce/models/products.dart';
+import 'package:e_commerce/provider/favorite_provider.dart';
+import 'package:e_commerce/screens/Detail/detail_screen.dart';
 import 'package:e_commerce/screens/constans.dart';
+import 'package:flutter/material.dart';
+
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -36,33 +39,53 @@ class ProductCard extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 5),
                 Center(
                   child: Hero(
-                      tag: product.image,
-                      child: Image.asset(
-                        product.image,
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.cover,
-                      )),
+  tag: product.image,
+  child: product.imageBytes.isNotEmpty
+      ? (() {
+          try {
+            final decodedImage = base64Decode(product.imageBytes);
+            return Image.memory(
+              decodedImage,
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
+            );
+          } catch (e) {
+            print('Error decoding image: $e'); // Log the error
+            return const Icon(Icons.error); // Display an error icon or placeholder
+          }
+        })()
+      : File(product.image).existsSync()
+          ? Image.file(
+              File(product.image), // Use Image.file for filesystem images
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
+            )
+          : Image.asset(
+              product.image,
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
+            ),
+),
+               
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 4),
                   child: Text(
                     product.title,
                     style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -71,29 +94,32 @@ class ProductCard extends StatelessWidget {
                       child: Text(
                         "\$${product.price}",
                         style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     Row(
-                        children: List.generate(
-                            product.colors.length,
-                            (index) => Container(
-                                  width: 18,
-                                  height: 18,
-                                  margin: const EdgeInsets.only(right: 4),
-                                  decoration: BoxDecoration(
-                                    color: product.colors[index],
-                                    shape: BoxShape.circle,
-                                  ),
-                                )))
+                      children: List.generate(
+                        product.colors.length,
+                        (index) => Container(
+                          width: 18,
+                          height: 18,
+                          margin: const EdgeInsets.only(right: 4),
+                          decoration: BoxDecoration(
+                            color: product.colors[index],
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
-          // for favorite icon ...
+          // Favorite icon
           Positioned(
             child: Align(
               alignment: Alignment.topRight,
@@ -112,9 +138,10 @@ class ProductCard extends StatelessWidget {
                     provider.tooglefavorites(product);
                   },
                   child: Icon(
-                    provider.isExist(product)?Icons.favorite:
-                    Icons.favorite_border,
-                      size: 24, color: Colors.white),
+                    provider.isExist(product) ? Icons.favorite : Icons.favorite_border,
+                    size: 24,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
