@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_commerce/screens/FirestScreen/forget_password.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +8,7 @@ import 'package:e_commerce/constants/CustomButton.dart';
 import 'package:e_commerce/constants/CustomTextForm.dart';
 import 'package:e_commerce/screens/FirestScreen/signup.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -30,13 +32,13 @@ class _SigninState extends State<Signin> {
     }
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication googleAuth =
+    final GoogleSignInAuthentication? googleAuth =
         await googleUser.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
     );
 
     // Once signed in, return the UserCredential
@@ -46,6 +48,29 @@ class _SigninState extends State<Signin> {
   @override
   void initState() {
     super.initState();
+    _loadUserCredentials();
+  }
+
+  // Load user credentials if "Remember Me" was checked
+  void _loadUserCredentials() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      rememberMe = prefs.getBool('remember_me') ?? false;
+      if (rememberMe) {
+        email.text = prefs.getString('email') ?? '';
+        password.text = prefs.getString('password') ?? '';
+      }
+    });
+  }
+
+  // Save user credentials if "Remember Me" is checked
+  void _saveUserCredentials() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (rememberMe) {
+      await prefs.setString('email', email.text);
+      await prefs.setString('password', password.text);
+    }
+    await prefs.setBool('remember_me', rememberMe);
   }
 
   @override
@@ -115,7 +140,7 @@ class _SigninState extends State<Signin> {
                         value: rememberMe,
                         onChanged: (value) {
                           setState(() {
-                            rememberMe = value!;
+                            rememberMe = value ?? false;
                           });
                         },
                       ),
@@ -128,7 +153,12 @@ class _SigninState extends State<Signin> {
                             style: TextStyle(
                               color: kprimaryColor2,
                             )),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ForgetPassword()));
+                        },
                       )
                     ],
                   ),
@@ -139,6 +169,7 @@ class _SigninState extends State<Signin> {
                     title: "Sign in",
                     onPressed: () async {
                       if (formState.currentState!.validate()) {
+                        _saveUserCredentials();
                         // ScaffoldMessenger.of(context).showSnackBar(
                         //   SnackBar(content: Text('Form is valid')),
                         // );
@@ -150,7 +181,8 @@ class _SigninState extends State<Signin> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const BottomNavBar()));
+                                    builder: (context) =>
+                                        const BottomNavBar()));
                           } else {
                             AwesomeDialog(
                               context: context,
@@ -254,6 +286,7 @@ class _SigninState extends State<Signin> {
                       ),
                       TextButton(
                           onPressed: () {
+                            _saveUserCredentials();
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

@@ -37,50 +37,48 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       key: scaffoldkey,
       appBar: AppBar(
-  elevation: 0,
-  title: const Row(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    children: [
-      Text("Welcome to"),
-      Text(
-        "Snap Shop",
-        style: TextStyle(color: kprimaryColor),
-      ),
-    ],
-  ),
-  leading: IconButton(
-    style: IconButton.styleFrom(
-      
-      padding: const EdgeInsets.all(20),
-    ),
-    onPressed: () {
-      scaffoldkey.currentState!.openDrawer();
-    },
-    icon: Image.asset(
-      "images/icon.png",
-      height: 30,
-      width: 25,
-      color: kprimaryColor,
-    ),
-  ),
-  actions: [
-    // Adding a Switch to the AppBar
-    Consumer<ThemeProvider>(
-      builder: (context, themeProvider, child) {
-        return Switch(
-          value: themeProvider.isDarkMode, // Get the current theme mode
-          onChanged: (value) {
-            themeProvider.toggleTheme(value); // Toggle the theme mode
+        elevation: 0,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text("Welcome to"),
+            Text(
+              "Snap Shop",
+              style: TextStyle(color: kprimaryColor),
+            ),
+          ],
+        ),
+        leading: IconButton(
+          style: IconButton.styleFrom(
+            padding: const EdgeInsets.all(20),
+          ),
+          onPressed: () {
+            scaffoldkey.currentState!.openDrawer();
           },
-          activeColor: kprimaryColor, // Switch active color
-          inactiveThumbColor: kcontentColor, // Switch inactive color
-        );
-      },
-    ),
-  ],
-),
-
-      
+          icon: Image.asset(
+            "images/icon.png",
+            height: 30,
+            width: 25,
+            color: kprimaryColor,
+          ),
+        ),
+        actions: [
+          // Adding a Switch to the AppBar
+          Consumer<ThemeProvider>(
+            builder: (context, themeProvider, child) {
+              return IconButton(
+                icon: Icon(themeProvider.isDarkMode
+                    ? Icons.nights_stay
+                    : Icons.wb_sunny,
+                    color: kprimaryColor,),
+                onPressed: () {
+                  themeProvider.toggleTheme();
+                },
+              );
+            },
+          ),
+        ],
+      ),
       drawer: const HomeDrawer(),
       body: SingleChildScrollView(
         child: Padding(
