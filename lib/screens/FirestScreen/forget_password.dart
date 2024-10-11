@@ -14,13 +14,9 @@ class ForgetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: BackButton(
-          color: Colors.black,
-        ),
+        leading: BackButton(),
       ),
       body: Container(
-        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child: SingleChildScrollView(
@@ -36,7 +32,6 @@ class ForgetPassword extends StatelessWidget {
                       "Forget Password",
                       style: TextStyle(
                           fontSize: 30,
-                          color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

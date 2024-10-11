@@ -36,6 +36,10 @@ class _CustomTextFormState extends State<CustomTextForm> {
         controller: widget.myControler,
         obscureText: (widget.isPassword && isObscured),
         keyboardType: widget.keyboardType,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 15,
+        ),
         decoration: InputDecoration(
           focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
@@ -65,6 +69,10 @@ class _CustomTextFormState extends State<CustomTextForm> {
         validator: widget.validator,
         controller: widget.myControler,
         keyboardType: widget.keyboardType,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 15,
+        ),
         decoration: InputDecoration(
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(

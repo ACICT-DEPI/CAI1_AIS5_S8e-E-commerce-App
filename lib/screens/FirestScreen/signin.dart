@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_commerce/provider/theme_provider.dart';
 import 'package:e_commerce/screens/FirestScreen/forget_password.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:e_commerce/screens/constans.dart';
@@ -8,6 +9,7 @@ import 'package:e_commerce/constants/CustomButton.dart';
 import 'package:e_commerce/constants/CustomTextForm.dart';
 import 'package:e_commerce/screens/FirestScreen/signup.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Signin extends StatefulWidget {
@@ -77,13 +79,24 @@ class _SigninState extends State<Signin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: const BackButton(
-          color: Colors.black,
-        ),
+        leading: const BackButton(),
+        actions: [
+          Consumer<ThemeProvider>(
+            builder: (context, themeProvider, child) {
+              return IconButton(
+                icon: Icon(themeProvider.isDarkMode
+                    ? Icons.nights_stay
+                    : Icons.wb_sunny,
+                    color: kprimaryColor,),
+                onPressed: () {
+                  themeProvider.toggleTheme();
+                },
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
-        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child: SingleChildScrollView(
@@ -99,7 +112,6 @@ class _SigninState extends State<Signin> {
                       "Sign in to Your Account",
                       style: TextStyle(
                           fontSize: 30,
-                          color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

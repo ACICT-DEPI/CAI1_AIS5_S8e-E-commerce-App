@@ -10,13 +10,9 @@ class VerificationEmail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: const BackButton(
-          color: Colors.black,
-        ),
+        leading: const BackButton(),
       ),
       body:Container(
-        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child:Column(
@@ -29,7 +25,6 @@ class VerificationEmail extends StatelessWidget {
                       "Check Your Email",
                       style: TextStyle(
                           fontSize: 30,
-                          color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

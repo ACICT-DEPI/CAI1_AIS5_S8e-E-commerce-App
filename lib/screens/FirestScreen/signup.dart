@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_commerce/provider/theme_provider.dart';
 import 'package:e_commerce/screens/FirestScreen/verificationEmail.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +8,7 @@ import 'package:e_commerce/constants/CustomButton.dart';
 import 'package:e_commerce/constants/CustomTextForm.dart';
 import 'package:e_commerce/screens/FirestScreen/signin.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -50,13 +52,24 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: const BackButton(
-          color: Colors.black,
-        ),
+        leading: const BackButton(),
+        actions: [
+          Consumer<ThemeProvider>(
+            builder: (context, themeProvider, child) {
+              return IconButton(
+                icon: Icon(themeProvider.isDarkMode
+                    ? Icons.nights_stay
+                    : Icons.wb_sunny,
+                    color: kprimaryColor,),
+                onPressed: () {
+                  themeProvider.toggleTheme();
+                },
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
-        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child: SingleChildScrollView(
@@ -72,7 +85,6 @@ class _SignupState extends State<Signup> {
                       "Sign Up for Free",
                       style: TextStyle(
                           fontSize: 30,
-                          color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
