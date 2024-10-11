@@ -3,6 +3,8 @@ import 'package:e_commerce/screens/Detail/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'dart:convert'; // Ensure to import for base64 decoding
+import 'dart:io'; // Import for File handling
 
 class ViewedProductsScreen extends StatelessWidget {
   const ViewedProductsScreen({super.key});
@@ -25,12 +27,38 @@ class ViewedProductsScreen extends StatelessWidget {
                     final product = viewedProducts[index];
 
                     return ListTile(
-                      leading: Image.asset(
-                        product.image,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
+                      leading: (() {
+                        // Logic to load images dynamically
+                        try {
+                          final decodedImage = base64Decode(product.image);
+                          return Image.memory(
+                            decodedImage,
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          );
+                        } catch (e) {
+                          // If base64 decoding fails, try to load as a file or asset
+                          if (File(product.image).existsSync()) {
+                            return Image.file(
+                              File(product.image),
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            );
+                          } else {
+                            return Image.asset(
+                              product.image,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.error); // Display an error icon or placeholder
+                              },
+                            );
+                          }
+                        }
+                      })(),
                       title: Text(product.title),
                       subtitle: Text('Price: \$${product.price}'),
                       onTap: () {

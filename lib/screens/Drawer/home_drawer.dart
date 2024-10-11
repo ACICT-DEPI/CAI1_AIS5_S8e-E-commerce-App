@@ -70,7 +70,7 @@ class HomeDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) =>  AboutUs()));
+                  context, MaterialPageRoute(builder: (context) =>  const AboutUs()));
             },
           ),
 

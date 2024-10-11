@@ -1,5 +1,6 @@
 import 'package:e_commerce/screens/Cart/cart_screen.dart';
 import 'package:e_commerce/screens/Home/HomeScreen.dart';
+import 'package:e_commerce/screens/Home/Widgets/add_product.dart';
 import 'package:e_commerce/screens/Profile/Profile.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:e_commerce/screens/Favorite/favorite.dart';
@@ -15,7 +16,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int cuttentIndex = 2;
   List screensList = [
-    const Scaffold(),
+    const AddProduct(),
     const Favorite(),
     const HomeScreen(),
     const CartScreen(),
@@ -58,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   });
                 },
                 icon: Icon(
-                  Icons.grid_view_outlined,
+                  Icons.add_shopping_cart_outlined,
                   size: 30,
                   color:
                       cuttentIndex == 0 ? kprimaryColor : Colors.grey.shade400,
