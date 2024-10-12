@@ -20,6 +20,7 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
+  bool isLoading = false;
   bool rememberMe = false;
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -84,10 +85,10 @@ class _SigninState extends State<Signin> {
           Consumer<ThemeProvider>(
             builder: (context, themeProvider, child) {
               return IconButton(
-                icon: Icon(themeProvider.isDarkMode
-                    ? Icons.nights_stay
-                    : Icons.wb_sunny,
-                    color: kprimaryColor,),
+                icon: Icon(
+                  themeProvider.isDarkMode ? Icons.nights_stay : Icons.wb_sunny,
+                  color: kprimaryColor,
+                ),
                 onPressed: () {
                   themeProvider.toggleTheme();
                 },
@@ -96,7 +97,7 @@ class _SigninState extends State<Signin> {
           ),
         ],
       ),
-      body: Container(
+      body: isLoading? Center(child: CircularProgressIndicator(color: kprimaryColor,),) : Container(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child: SingleChildScrollView(
@@ -110,9 +111,8 @@ class _SigninState extends State<Signin> {
                   const Center(
                     child: Text(
                       "Sign in to Your Account",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(
@@ -186,9 +186,15 @@ class _SigninState extends State<Signin> {
                         //   SnackBar(content: Text('Form is valid')),
                         // );
                         try {
+                          isLoading = true;
+                          setState(() {});
                           final credential = await FirebaseAuth.instance
                               .signInWithEmailAndPassword(
                                   email: email.text, password: password.text);
+                          isLoading = false;
+                          setState(() {
+                            
+                          });
                           if (credential.user!.emailVerified) {
                             Navigator.pushReplacement(
                                 context,
@@ -231,6 +237,8 @@ class _SigninState extends State<Signin> {
                             title: 'ERROR',
                             desc: 'Wrong email or password',
                           ).show();
+                          isLoading = false;
+                          setState(() {});
                         }
                       }
                     },
