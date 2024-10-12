@@ -266,7 +266,7 @@ class _PaymentSelectionScreenState extends State<PaymentSelectionScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 200,
+                  height: 180,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(

@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/provider/theme_provider.dart';
 import 'package:e_commerce/screens/FirestScreen/verificationEmail.dart';
 import 'package:e_commerce/screens/constans.dart';
@@ -23,6 +24,7 @@ class _SignupState extends State<Signup> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPasswoed = TextEditingController();
+  TextEditingController phone = TextEditingController();
   GlobalKey<FormState> formState = GlobalKey<FormState>();
 
   Future<UserCredential> signInWithGoogle() async {
@@ -43,6 +45,20 @@ class _SignupState extends State<Signup> {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  addUser() async {
+    try {
+      DocumentReference response = await users.add({
+        'user_name': userName.text,
+        'email': email.text,
+        'phone': phone.text
+      });
+    } catch (e) {
+      print("Error-----------$e");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -57,10 +73,10 @@ class _SignupState extends State<Signup> {
           Consumer<ThemeProvider>(
             builder: (context, themeProvider, child) {
               return IconButton(
-                icon: Icon(themeProvider.isDarkMode
-                    ? Icons.nights_stay
-                    : Icons.wb_sunny,
-                    color: kprimaryColor,),
+                icon: Icon(
+                  themeProvider.isDarkMode ? Icons.nights_stay : Icons.wb_sunny,
+                  color: kprimaryColor,
+                ),
                 onPressed: () {
                   themeProvider.toggleTheme();
                 },
@@ -83,9 +99,8 @@ class _SignupState extends State<Signup> {
                   const Center(
                     child: Text(
                       "Sign Up for Free",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(
@@ -119,6 +134,20 @@ class _SignupState extends State<Signup> {
                         RegExp regex = RegExp(pattern);
                         if (!regex.hasMatch(val)) {
                           return 'Enter a valid email address';
+                        }
+                        return null;
+                      }),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextForm(
+                      hintText: "Your Phone Number",
+                      keyboardType: TextInputType.number,
+                      myControler: phone,
+                      isPassword: false,
+                      validator: (val) {
+                        if (val == null || val.isEmpty) {
+                          return 'Please enter your phone';
                         }
                         return null;
                       }),
@@ -171,10 +200,12 @@ class _SignupState extends State<Signup> {
                           );
                           FirebaseAuth.instance.currentUser!
                               .sendEmailVerification();
+                          addUser();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const VerificationEmail()));
+                                  builder: (context) =>
+                                      const VerificationEmail()));
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
                             print('The password provided is too weak.');
