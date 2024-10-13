@@ -52,7 +52,8 @@ class _SignupState extends State<Signup> {
       DocumentReference response = await users.add({
         'user_name': userName.text,
         'email': email.text,
-        'phone': phone.text
+        'phone': phone.text,
+        // 'profileImageURL':"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
       });
     } catch (e) {
       print("Error-----------$e");
