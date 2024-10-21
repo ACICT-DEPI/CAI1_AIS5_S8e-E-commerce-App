@@ -26,17 +26,17 @@ class DetailAppBar extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios),
           ),
           const Spacer(),
-          IconButton(
-            style: IconButton.styleFrom(
-              padding: const EdgeInsets.all(15),
-            ),
-            onPressed: () {},
-            iconSize: 23,
-            icon: const Icon(Icons.share_outlined),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
+          // IconButton(
+          //   style: IconButton.styleFrom(
+          //     padding: const EdgeInsets.all(15),
+          //   ),
+          //   onPressed: () {},
+          //   iconSize: 23,
+          //   icon: const Icon(Icons.share_outlined),
+          // ),
+          // const SizedBox(
+          //   width: 10,
+          // ),
           IconButton(
             style: IconButton.styleFrom(
               padding: const EdgeInsets.all(15),

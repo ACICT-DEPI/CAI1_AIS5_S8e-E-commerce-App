@@ -44,7 +44,7 @@ class ImageSlider extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
-                5,
+                3,
                 (index) => AnimatedContainer(
                   duration:const Duration(microseconds: 300),
                   width: currenSlide==index ?15:8,
