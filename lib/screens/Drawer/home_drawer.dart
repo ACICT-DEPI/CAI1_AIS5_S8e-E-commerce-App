@@ -1,6 +1,7 @@
 
 import 'package:e_commerce/screens/Drawer/aboutus.dart';
 import 'package:e_commerce/screens/FirestScreen/signin.dart';
+import 'package:e_commerce/screens/Profile/Profile.dart';
 import 'package:e_commerce/screens/bottom_nav_bar.dart';
 import 'package:e_commerce/screens/constans.dart';
 import 'package:e_commerce/screens/product_viewed_screen/product_viewed.dart';
@@ -74,7 +75,20 @@ class HomeDrawer extends StatelessWidget {
             },
           ),
 
-
+ListTile(
+            leading: const Icon(
+              Icons.account_circle_outlined,
+              color: kprimaryColor,
+            ),
+            title: const Text(
+              'Profile',
+              
+            ),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => const Profile()));
+            },
+          ),
           ListTile(
             leading: const Icon(
               Icons.logout,
